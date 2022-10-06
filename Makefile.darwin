@@ -1,0 +1,21 @@
+include ENVIRONMENTS
+GO=/usr/local/go/bin/go
+
+.PHONY: build_macos
+
+all: build_macos
+
+build_macos:
+	@$(GO) mod tidy
+	GOOS=darwin GOARCH=amd64 $(GO) build -o $(OUT)_amd64 -ldflags "-s -w -X 'main.APPLICATION_VERSION=$(VERSION)'" ./cmd/protocol/.
+
+	GOOS=darwin GOARCH=arm64 $(GO) build -o $(OUT)_arm64 -ldflags "-s -w -X 'main.APPLICATION_VERSION=$(VERSION)'" ./cmd/protocol/.
+
+	@lipo -create -output $(OUT) $(OUT)_amd64 $(OUT)_arm64
+	@rm $(OUT)_amd64 $(OUT)_arm64
+
+clean:	
+ifneq (,$(wildcard $(OUT)))
+	@rm $(OUT)
+endif
+	@$(GO) clean

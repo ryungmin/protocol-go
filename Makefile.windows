@@ -1,0 +1,19 @@
+include ENVIRONMENTS
+GO=go.exe
+
+.PHONY: build_windows
+
+all: build_windows
+
+build_windows:
+	SET GOOS=windows & SET GOARCH=amd64 & $(GO) build -o protocol.exe -ldflags "-X 'main.APPLICATION_VERSION=$(VERSION)'" .\cmd\protocol\.
+
+build_win32:
+	SET GOOS=windows & SET GOARCH=386 & $(GO) build -o protocol.exe -ldflags "-X 'main.APPLICATION_VERSION=$(VERSION)'" .\cmd\protocol\.
+
+clean:
+ifneq (,$(wildcard $(OUT).exe))
+	@del $(OUT).exe
+endif
+
+	@$(GO) clean
