@@ -1,4 +1,4 @@
-# Why this proejct?
+# Why this project?
 Protocol is a command-line tool to display ASCII RFC-like protocol header diagrams for both existing network protocols or user-defined ones (using a very simple syntax). Protocol is written in Python and it's open-source software, licensed under the GPLv3 license.
 
 [Protocol](https://www.luismg.com/protocol/)
