@@ -41,6 +41,9 @@ type fieldEntity struct {
 func (pt protocolImpl) String() string {
 	// First of all, process our field list. This does some magic to make
 	// the algorithm work for fields that span more than one line
+	source := make([]fieldEntity, len(pt.field_list))
+	copy(source, pt.field_list)
+
 	proto_fields := pt._process_field_list()
 	lines := []string{}
 	numbers := _get_top_numbers(
@@ -205,6 +208,37 @@ func (pt protocolImpl) String() string {
 		}
 	}
 
+	lines = append(lines, "")
+
+	{ // print description
+		// * {{proto_fields[0].text}} ({{proto_fields[0].len}} bytes)
+		// * {{proto_fields[1].text}} ({{proto_fields[1].len}} bytes)
+		// ...
+		// * {{proto_fields[n].text}} ({{proto_fields[n].len}} bytes)
+		// total {{SUM(proto_fields[0:n].len)}} bytes
+
+		total := 0
+		for _, field := range source {
+			var line string
+			total += field.len
+			if field.len < 2 {
+				line = fmt.Sprintf("* %s (%d byte)", field.text, field.len)
+			} else {
+				line = fmt.Sprintf("* %s (%d bytes)", field.text, field.len)
+			}
+
+			lines = append(lines, line)
+		}
+
+		var line string
+		if total < 2 {
+			line = fmt.Sprintf("total %d byte", total)
+		} else {
+			line = fmt.Sprintf("total %d bytes", total)
+		}
+		lines = append(lines, line)
+	}
+
 	result := strings.Join(lines, "\n")
 
 	return result
@@ -218,7 +252,6 @@ func (p *protocolImpl) setFields(items []string) error {
 	}
 
 	p.field_list = append(p.field_list, fields...)
-
 	return nil
 }
 
