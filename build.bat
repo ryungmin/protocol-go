@@ -1,6 +1,6 @@
 @echo off
 
-SET VERSION=0.1.0
+SET VERSION=0.1.2
 SET OUT=protocol
 
 IF "%1" == "help" GOTO HELP
