@@ -14,7 +14,7 @@ package protocol
 //     +                                            Payload                                            +
 //     |                                                                                               |
 //     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Ethernet = "Destination Address:48,Source Address:48,EtherType:16,Payload:128?bits=48"
+const ethernet = "Destination Address:48,Source Address:48,EtherType:16,Payload:128?bits=48"
 
 //     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //     |                                      Destination Address                                      |
@@ -27,7 +27,7 @@ const Ethernet = "Destination Address:48,Source Address:48,EtherType:16,Payload:
 //     +                                            Payload                                            +
 //     |                                                                                               |
 //     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Dot1q = "Destination Address:48,Source Address:48,TPID (0x8100):16,PCP:3,D:1,VLAN ID:12,EtherType:16,Payload:96?bits=48"
+const dot1q = "Destination Address:48,Source Address:48,TPID (0x8100):16,PCP:3,D:1,VLAN ID:12,EtherType:16,Payload:96?bits=48"
 
 //     0                   1                   2                   3
 //     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -46,7 +46,7 @@ const Dot1q = "Destination Address:48,Source Address:48,TPID (0x8100):16,PCP:3,D
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |                             data                              |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Tcp = "Source Port:16,Destination Port:16,Sequence Number:32,Acknowledgment Number:32,Offset:4,Res.:4,Flags:8,Window:16,Checksum:16,Urgent Pointer:16,Options:24,Padding:8"
+const tcp = "Source Port:16,Destination Port:16,Sequence Number:32,Acknowledgment Number:32,Offset:4,Res.:4,Flags:8,Window:16,Checksum:16,Urgent Pointer:16,Options:24,Padding:8"
 
 //     0                   1                   2                   3
 //     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -55,7 +55,7 @@ const Tcp = "Source Port:16,Destination Port:16,Sequence Number:32,Acknowledgmen
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |            Length             |            Checksum           |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Udp = "Source Port:16,Destination Port:16,Length:16,Checksum:16"
+const udp = "Source Port:16,Destination Port:16,Length:16,Checksum:16"
 
 //     0                   1                   2                   3
 //     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -72,7 +72,7 @@ const Udp = "Source Port:16,Destination Port:16,Length:16,Checksum:16"
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |                    Options                    |    Padding    |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Ip = "Version:4,IHL:4,Type of Service:8,Total Length:16,Identification:16,Flags:3,Fragment Offset:13,Time to Live:8,Protocol:8,Header Checksum:16,Source Address:32,Destination Address:32,Options:24,Padding:8"
+const ip = "Version:4,IHL:4,Type of Service:8,Total Length:16,Identification:16,Flags:3,Fragment Offset:13,Time to Live:8,Protocol:8,Header Checksum:16,Source Address:32,Destination Address:32,Options:24,Padding:8"
 
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |Version| Traffic Class |           Flow Label                  |
@@ -95,7 +95,7 @@ const Ip = "Version:4,IHL:4,Type of Service:8,Total Length:16,Identification:16,
 //    +                                                               +
 //    |                                                               |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Ipv6 = "Version:4,Traffic Class:8,Flow Label:20,Payload Length:16,Next Header:8,Hop Limit:8, Source Address:128, Destination Address:128"
+const ipv6 = "Version:4,Traffic Class:8,Flow Label:20,Payload Length:16,Next Header:8,Hop Limit:8, Source Address:128, Destination Address:128"
 
 // ICMPv4 Generic Header
 //
@@ -108,7 +108,7 @@ const Ipv6 = "Version:4,Traffic Class:8,Flow Label:20,Payload Length:16,Next Hea
 //     +                          Message Body                         +
 //     |                                                               |
 //     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Icmp = "Type:8,Code:8,Checksum:16,Message Body:64"
+const icmp = "Type:8,Code:8,Checksum:16,Message Body:64"
 
 // ICMPv4 Destination Unreachable Message
 //
@@ -121,7 +121,7 @@ const Icmp = "Type:8,Code:8,Checksum:16,Message Body:64"
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |      Internet Header + 64 bits of Original Data Datagram      |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Icmp_destination = "Type:8,Code:8,Checksum:16,Unused:32,Internet Header + 64 bits of Original Data Datagram:64"
+const icmp_destination = "Type:8,Code:8,Checksum:16,Unused:32,Internet Header + 64 bits of Original Data Datagram:64"
 
 // ICMPv4 Time Exceeded Message
 //
@@ -134,7 +134,7 @@ const Icmp_destination = "Type:8,Code:8,Checksum:16,Unused:32,Internet Header + 
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |      Internet Header + 64 bits of Original Data Datagram      |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Icmp_time = "Type:8,Code:8,Checksum:16,Unused:32,Internet Header + 64 bits of Original Data Datagram:64"
+const icmp_time = "Type:8,Code:8,Checksum:16,Unused:32,Internet Header + 64 bits of Original Data Datagram:64"
 
 // ICMPv4 Parameter Problem Message
 //
@@ -147,7 +147,7 @@ const Icmp_time = "Type:8,Code:8,Checksum:16,Unused:32,Internet Header + 64 bits
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |      Internet Header + 64 bits of Original Data Datagram      |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Icmp_parameter = "Type:8,Code:8,Checksum:16,Pointer:8,Unused:24,Internet Header + 64 bits of Original Data Datagram:64"
+const icmp_parameter = "Type:8,Code:8,Checksum:16,Pointer:8,Unused:24,Internet Header + 64 bits of Original Data Datagram:64"
 
 // ICMPv4 Source Quench Message
 //
@@ -160,7 +160,7 @@ const Icmp_parameter = "Type:8,Code:8,Checksum:16,Pointer:8,Unused:24,Internet H
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |      Internet Header + 64 bits of Original Data Datagram      |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Icmp_source = "Type:8,Code:8,Checksum:16,Unused:32,Internet Header + 64 bits of Original Data Datagram:64"
+const icmp_source = "Type:8,Code:8,Checksum:16,Unused:32,Internet Header + 64 bits of Original Data Datagram:64"
 
 // ICMPv4 Redirect Message
 //
@@ -173,7 +173,7 @@ const Icmp_source = "Type:8,Code:8,Checksum:16,Unused:32,Internet Header + 64 bi
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |      Internet Header + 64 bits of Original Data Datagram      |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Icmp_redirect = "Type:8,Code:8,Checksum:16,Gateway Internet Address:32,Internet Header + 64 bits of Original Data Datagram:64"
+const icmp_redirect = "Type:8,Code:8,Checksum:16,Gateway Internet Address:32,Internet Header + 64 bits of Original Data Datagram:64"
 
 // ICMPv4 Echo or Echo Reply Message
 //
@@ -186,7 +186,7 @@ const Icmp_redirect = "Type:8,Code:8,Checksum:16,Gateway Internet Address:32,Int
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |     Data ...
 //    +-+-+-+-+-
-const Icmp_echo = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:16,Data:64"
+const icmp_echo = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:16,Data:64"
 
 // ICMPv4 Timestamp or Timestamp Reply Message
 //
@@ -203,7 +203,7 @@ const Icmp_echo = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:16,Da
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |     Transmit Timestamp                                        |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Icmp_timestamp = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:16,Originate Timestamp:32,Receive Timestamp:32,Transmit Timestamp:32"
+const icmp_timestamp = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:16,Originate Timestamp:32,Receive Timestamp:32,Transmit Timestamp:32"
 
 // ICMPv4 Information Request or Information Reply Message
 //
@@ -214,7 +214,7 @@ const Icmp_timestamp = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //    |           Identifier          |        Sequence Number        |
 //    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Icmp_information = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:16"
+const icmp_information = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:16"
 
 // ICMPv6 General Format
 //
@@ -226,7 +226,7 @@ const Icmp_information = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Numbe
 //       |                                                               |
 //       +                         Message Body                          +
 //       |                                                               |
-const Icmpv6 = "Type:8,Code:8,Checksum:16,Message Body:64"
+const icmpv6 = "Type:8,Code:8,Checksum:16,Message Body:64"
 
 // ICMPv6 Destination Unreachable Message
 //
@@ -240,7 +240,7 @@ const Icmpv6 = "Type:8,Code:8,Checksum:16,Message Body:64"
 //       |  Invoking packet data (without exceeding minimum IPv6 MTU)      |
 //       +                as possible without the ICMPv6 packet          +
 //       |                exceeding the minimum IPv6 MTU [IPv6]          |
-const Icmpv6_destination = "Type:8,Code:8,Checksum:16,Unused:32,Invoking packet data (without exceeding minimum IPv6 MTU):64"
+const icmpv6_destination = "Type:8,Code:8,Checksum:16,Unused:32,Invoking packet data (without exceeding minimum IPv6 MTU):64"
 
 // ICMPv6 Packet Too Big Message
 //
@@ -254,7 +254,7 @@ const Icmpv6_destination = "Type:8,Code:8,Checksum:16,Unused:32,Invoking packet 
 //       |                    As much of invoking packet                 |
 //       +               as possible without the ICMPv6 packet           +
 //       |               exceeding the minimum IPv6 MTU [IPv6]           |
-const Icmpv6_big = "Type:8,Code:8,Checksum:16,MTU:32,Invoking packet data (without exceeding minimum IPv6 MTU):64"
+const icmpv6_big = "Type:8,Code:8,Checksum:16,MTU:32,Invoking packet data (without exceeding minimum IPv6 MTU):64"
 
 // ICMPv6 Time Exceeded Message
 //
@@ -268,7 +268,7 @@ const Icmpv6_big = "Type:8,Code:8,Checksum:16,MTU:32,Invoking packet data (witho
 //       |                    As much of invoking packet                 |
 //       +               as possible without the ICMPv6 packet           +
 //       |               exceeding the minimum IPv6 MTU [IPv6]           |
-const Icmpv6_time = "Type:8,Code:8,Checksum:16,Unused:32,Invoking packet data (without exceeding minimum IPv6 MTU):64"
+const icmpv6_time = "Type:8,Code:8,Checksum:16,Unused:32,Invoking packet data (without exceeding minimum IPv6 MTU):64"
 
 // ICMPv6 Parameter Problem Message
 //
@@ -282,7 +282,7 @@ const Icmpv6_time = "Type:8,Code:8,Checksum:16,Unused:32,Invoking packet data (w
 //       |                    As much of invoking packet                 |
 //       +               as possible without the ICMPv6 packet           +
 //       |               exceeding the minimum IPv6 MTU [IPv6]           |
-const Icmpv6_parameter = "Type:8,Code:8,Checksum:16,Pointer:32,Invoking packet data (without exceeding minimum IPv6 MTU):64"
+const icmpv6_parameter = "Type:8,Code:8,Checksum:16,Pointer:32,Invoking packet data (without exceeding minimum IPv6 MTU):64"
 
 // ICMPv6 Echo Request and Reply Message
 //
@@ -295,7 +295,7 @@ const Icmpv6_parameter = "Type:8,Code:8,Checksum:16,Pointer:32,Invoking packet d
 //       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //       |     Data ...
 //       +-+-+-+-+-
-const Icmpv6_echo = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:16,Data:64"
+const icmpv6_echo = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:16,Data:64"
 
 // ICMPv6 Router Solicitation Message Format
 //
@@ -308,7 +308,7 @@ const Icmpv6_echo = "Type:8,Code:8,Checksum:16,Identifier:16,Sequence Number:16,
 //      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //      |   Options ...
 //      +-+-+-+-+-+-+-+-+-+-+-+-
-const Icmpv6_rsol = "Type:8,Code:8,Checksum:16,Reserved:32,Options:64"
+const icmpv6_rsol = "Type:8,Code:8,Checksum:16,Reserved:32,Options:64"
 
 // ICMPv6 Router Advertisement Message Format
 //
@@ -325,7 +325,7 @@ const Icmpv6_rsol = "Type:8,Code:8,Checksum:16,Reserved:32,Options:64"
 //      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //      |   Options ...
 //      +-+-+-+-+-+-+-+-+-+-+-+-
-const Icmpv6_radv = "Type:8,Code:8,Checksum:16,Cur Hop Limit:8,M:1,O:1,Reserved:6,Router Lifetime:16,Reachable Time:32,Retransmission Timer:32,Options:64"
+const icmpv6_radv = "Type:8,Code:8,Checksum:16,Cur Hop Limit:8,M:1,O:1,Reserved:6,Router Lifetime:16,Reachable Time:32,Retransmission Timer:32,Options:64"
 
 // ICMPv6 Neighbor Solicitation Message Format
 //
@@ -346,7 +346,7 @@ const Icmpv6_radv = "Type:8,Code:8,Checksum:16,Cur Hop Limit:8,M:1,O:1,Reserved:
 //      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //      |   Options ...
 //      +-+-+-+-+-+-+-+-+-+-+-+-
-const Icmpv6_nsol = "Type:8,Code:8,Checksum:16,Reserved:32,Target Address:128,Options:64"
+const icmpv6_nsol = "Type:8,Code:8,Checksum:16,Reserved:32,Target Address:128,Options:64"
 
 // ICMPv6 Neighbor Advertisement Message Format
 //
@@ -367,7 +367,7 @@ const Icmpv6_nsol = "Type:8,Code:8,Checksum:16,Reserved:32,Target Address:128,Op
 //       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //       |   Options ...
 //       +-+-+-+-+-+-+-+-+-+-+-+-
-const Icmpv6_nadv = "Type:8,Code:8,Checksum:16,R:1,S:1,O:1,Reserved:29,Target Address:128,Options:64"
+const icmpv6_nadv = "Type:8,Code:8,Checksum:16,R:1,S:1,O:1,Reserved:29,Target Address:128,Options:64"
 
 // ICMPv6 Redirect Message Format
 //
@@ -396,29 +396,29 @@ const Icmpv6_nadv = "Type:8,Code:8,Checksum:16,R:1,S:1,O:1,Reserved:29,Target Ad
 //       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 //       |   Options ...
 //       +-+-+-+-+-+-+-+-+-+-+-+-
-const Icmpv6_redirect = "Type:8,Code:8,Checksum:16,Reserved:32,Target Address:128,Destination Address:128,Options:64"
+const icmpv6_redirect = "Type:8,Code:8,Checksum:16,Reserved:32,Target Address:128,Destination Address:128,Options:64"
 
-const Dhcp = "Opcode:8,Hardware Type: 8,HW Addr Len:8,Hop Count:8,Transaction ID:32,Number of Seconds:16,Flags:16,Client IP Addr:32,Your IP Addr: 32,Server IP Addr:32,Gateway IP Addr:32,Client Hardware Addr:128,Server Host Name:512,Boot Filename:1024"
+const dhcp = "Opcode:8,Hardware Type: 8,HW Addr Len:8,Hop Count:8,Transaction ID:32,Number of Seconds:16,Flags:16,Client IP Addr:32,Your IP Addr: 32,Server IP Addr:32,Gateway IP Addr:32,Client Hardware Addr:128,Server Host Name:512,Boot Filename:1024"
 
-const Modbus_tcp = "Transaction ID:16,Protocol ID:16,Length:16,Address:8,Function Code:8,Data:64"
+const modbus_tcp = "Transaction ID:16,Protocol ID:16,Length:16,Address:8,Function Code:8,Data:64"
 
-const Profinet_rt = "Frame ID:16,User Data:80,Cycle Counter:16,Data Status:8,Transfer Status:8"
+const profinet_rt = "Frame ID:16,User Data:80,Cycle Counter:16,Data Status:8,Transfer Status:8"
 
-const Dnp3 = "Start:16,Length:8,Control:8,Destination Address:16,Source Address:16,CRC:16,User Data 1:128,CRC 1:16,User Data 2:112,CRC 2:16"
+const dnp3 = "Start:16,Length:8,Control:8,Destination Address:16,Source Address:16,CRC:16,User Data 1:128,CRC 1:16,User Data 2:112,CRC 2:16"
 
-const Tsap = "Type:8,Slot:5,Rack:3?bits=16"
+const tsap = "Type:8,Slot:5,Rack:3?bits=16"
 
-const Cotp_cr = "Length:8,PDU Type:8, Destination Reference:16, Source Reference:16,Class/Options:8,Param. Code:8,Param. Length:8,Param.:88"
+const cotp_cr = "Length:8,PDU Type:8, Destination Reference:16, Source Reference:16,Class/Options:8,Param. Code:8,Param. Length:8,Param.:88"
 
-const Cotp_dt = "Length:8,PDU Type:8,Num. & LDU:8?bits=24"
+const cotp_dt = "Length:8,PDU Type:8,Num. & LDU:8?bits=24"
 
-const Cotp_dr = "Length:8,PDU Type:8, Destination Reference:16, Source Reference:16,Cause:8"
+const cotp_dr = "Length:8,PDU Type:8, Destination Reference:16, Source Reference:16,Cause:8"
 
-const S7_header = "Protocol ID:8,ROSCTR:8,Reserved:16,Request ID:16,Parameter Length:16,Data Length:16,Error Code (only ROSCTR 3):16,Function Code:8,Item Count:8?bits=16"
+const s7_header = "Protocol ID:8,ROSCTR:8,Reserved:16,Request ID:16,Parameter Length:16,Data Length:16,Error Code (only ROSCTR 3):16,Function Code:8,Item Count:8?bits=16"
 
-const S7_item = "Var Type:8,Var Length:8,Syntax ID:8,Transport Size:8,Length:16,DB Number:16,Area:8,Address:24"
+const s7_item = "Var Type:8,Var Length:8,Syntax ID:8,Transport Size:8,Length:16,DB Number:16,Area:8,Address:24"
 
-const S7_data = "Return Code:8,Transport Size:8,Data Length:16"
+const s7_data = "Return Code:8,Transport Size:8,Data Length:16"
 
 //      0                   1
 //      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
@@ -439,7 +439,7 @@ const S7_data = "Return Code:8,Transport Size:8,Data Length:16"
 //     *                               *
 //     |                               |
 //     *-------------------------------*
-const Example = "Field4:4,Field4:4,Field8:8,Field16:16,Field32:32,Field64:64?bits=16,numbers=y,startchar=*,endchar=*,evenchar=-,oddchar=-,sepchar=|"
+const example = "Field4:4,Field4:4,Field8:8,Field16:16,Field32:32,Field64:64?bits=16,numbers=y,startchar=*,endchar=*,evenchar=-,oddchar=-,sepchar=|"
 
 //      0                   1                   2                   3
 //      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -616,48 +616,55 @@ const Example = "Field4:4,Field4:4,Field8:8,Field16:16,Field32:32,Field64:64?bit
 //     +                                                               +
 //     |                                                               |
 //     +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-const Test = "Field_1:1,Field_4:4,Field_7:7,Field_10:10,Field_13:13,Field_16:16,Field_19:19,Field_22:22,Field_25:25,Field_28:28,Field_31:31,Field_34:34,Field_37:37,Field_40:40,Field_43:43,Field_46:46,Field_49:49,Field_52:52,Field_55:55,Field_58:58,Field_61:61,Field_64:64,Field_67:67,Field_70:70,Field_73:73,Field_76:76,Field_79:79,Field_82:82,Field_85:85,Field_88:88,Field_91:91,Field_94:94,Field_97:97,Field_100:100,Field_103:103,Field_106:106,Field_109:109,Field_112:112,Field_115:115,Field_118:118,Field_121:121,Field_124:124,Field_127:127"
+const test = "Field_1:1,Field_4:4,Field_7:7,Field_10:10,Field_13:13,Field_16:16,Field_19:19,Field_22:22,Field_25:25,Field_28:28,Field_31:31,Field_34:34,Field_37:37,Field_40:40,Field_43:43,Field_46:46,Field_49:49,Field_52:52,Field_55:55,Field_58:58,Field_61:61,Field_64:64,Field_67:67,Field_70:70,Field_73:73,Field_76:76,Field_79:79,Field_82:82,Field_85:85,Field_88:88,Field_91:91,Field_94:94,Field_97:97,Field_100:100,Field_103:103,Field_106:106,Field_109:109,Field_112:112,Field_115:115,Field_118:118,Field_121:121,Field_124:124,Field_127:127"
+
+type ProtocolDesc struct {
+	Specs string
+	Desc  string
+}
 
 // Dictionary of specs
-var Protocols = []map[string]string{
-	{"ethernet": Ethernet},
-	{"8021q": Dot1q},
-	{"dot1q": Dot1q},
-	{"tcp": Tcp},
-	{"udp": Udp},
-	{"ip": Ip},
-	{"ipv6": Ipv6},
-	{"icmp": Icmp},
-	{"icmp-destination": Icmp_destination},
-	{"icmp-time": Icmp_time},
-	{"icmp-parameter": Icmp_parameter},
-	{"icmp-source": Icmp_source},
-	{"icmp-redirect": Icmp_redirect},
-	{"icmp-echo": Icmp_echo},
-	{"icmp-timestamp": Icmp_timestamp},
-	{"icmp-information": Icmp_information},
-	{"icmpv6": Icmpv6},
-	{"icmpv6-destination": Icmpv6_destination},
-	{"icmpv6-big": Icmpv6_big},
-	{"icmpv6-time": Icmpv6_time},
-	{"icmpv6-parameter": Icmpv6_parameter},
-	{"icmpv6-echo": Icmpv6_echo},
-	{"icmpv6-rsol": Icmpv6_rsol},
-	{"icmpv6-radv": Icmpv6_radv},
-	{"icmpv6-nsol": Icmpv6_nsol},
-	{"icmpv6-nadv": Icmpv6_nadv},
-	{"icmpv6-redirect": Icmpv6_redirect},
-	{"dhcp": Dhcp},
-	{"modbus_tcp": Modbus_tcp},
-	{"profinet_rt": Profinet_rt},
-	{"tsap": Tsap},
-	{"dnp3": Dnp3},
-	{"s7_header": S7_header},
-	{"s7_item": S7_item},
-	{"s7_data": S7_data},
-	{"cotp_cr": Cotp_cr},
-	{"cotp_dt": Cotp_dt},
-	{"cotp_dr": Cotp_dr},
-	{"example": Example},
-	{"test": Test},
+var Protocols = map[string]ProtocolDesc{
+	"ethernet":           {ethernet, "Ethernet"},
+	"8021q":              {dot1q, "IEEE 802.1q"},
+	"dot1q":              {dot1q, "IEEE 802.1q"},
+	"tcp":                {tcp, "Transmission Control Protocol (TCP)"},
+	"udp":                {udp, "User Datagram Protocol (TCP)"},
+	"ip":                 {ip, "Internet Protocol (IP), version 4."},
+	"ipv4":               {ip, "Internet Protocol (IP), version 4."},
+	"ipv6":               {ipv6, "Internet Protocol (IP), version 6."},
+	"icmp":               {icmp, "Internet Control Message Protocol (ICMP)"},
+	"icmp-destination":   {icmp_destination, "ICMP Destination Unreachable"},
+	"icmp-time":          {icmp_time, "ICMP Time Exceeded"},
+	"icmp-parameter":     {icmp_parameter, "ICMP Parameter Problem"},
+	"icmp-source":        {icmp_source, "ICMP Source Quench"},
+	"icmp-redirect":      {icmp_redirect, "ICMP Redirect"},
+	"icmp-echo":          {icmp_echo, "ICMP Echo Request/Reply"},
+	"icmp-timestamp":     {icmp_timestamp, "ICMP Timestamp Request/Reply"},
+	"icmp-information":   {icmp_information, "ICMP Information Request/Reply"},
+	"icmpv6":             {icmpv6, "ICMP for IPv6 (ICMPv6)"},
+	"icmpv6-destination": {icmpv6_destination, "ICMPv6 Destination Unreachable"},
+	"icmpv6-big":         {icmpv6_big, "ICMPv6 Packet Too Big"},
+	"icmpv6-time":        {icmpv6_time, "ICMPv6 Time Exceeded"},
+	"icmpv6-parameter":   {icmpv6_parameter, "ICMPv6 Parameter Problem"},
+	"icmpv6-echo":        {icmpv6_echo, "ICMPv6 Echo Request/Reply"},
+	"icmpv6-rsol":        {icmpv6_rsol, "ICMPv6 Router Solicitation"},
+	"icmpv6-radv":        {icmpv6_radv, "ICMPv6 Router Advertisement"},
+	"icmpv6-nsol":        {icmpv6_nsol, "ICMPv6 Neighbor Solicitation"},
+	"icmpv6-nadv":        {icmpv6_nadv, "ICMPv6 Neighbor Advertisement"},
+	"icmpv6-redirect":    {icmpv6_redirect, "ICMPv6 Redirect"},
+	"dhcp":               {dhcp, "Dynamic Host Configuration Protocol"},
+	"modbus_tcp":         {modbus_tcp, "Modbus TCP"},
+	"profinet_rt":        {profinet_rt, "PROFINET Real Time (RT)"},
+	"tsap":               {tsap, "Texas Simplified Application Project (TSAP)"},
+	"dnp3":               {dnp3, "Distributed Network Protocol 3.0 (DNP3)"},
+	"s7_header":          {s7_header, "S7 Communication (S7Comm) Header"},
+	"s7_item":            {s7_item, "S7Comm Item"},
+	"s7_data":            {s7_data, "S7Comm Data"},
+	"cotp_cr":            {cotp_cr, "Connection-oriented Transport Protocol (COTP) for Connect Request"},
+	"cotp_cc":            {cotp_cr, "COTP for Connect Confirm"},
+	"cotp_dt":            {cotp_dt, "COTP for Data"},
+	"cotp_dr":            {cotp_dr, "COTP for Disconnect Request"},
+	"example":            {example, "Example"},
+	"test":               {test, "Test"},
 }
