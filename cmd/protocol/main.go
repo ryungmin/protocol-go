@@ -3,10 +3,17 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/ryungmin/protocol-go/pkg/protocol"
 )
+
+var APPLICATION_NAME string = "protocol"
+
+func init() {
+	APPLICATION_NAME = filepath.Base(os.Args[0])
+}
 
 // Current version
 var APPLICATION_VERSION string
