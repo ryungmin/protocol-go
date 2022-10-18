@@ -6,7 +6,7 @@ GO=/usr/local/go/bin/go
 all: build_linux
 
 build_linux:
-	GOOS=linux $(GO) build -o protocol -ldflags "-X 'main.APPLICATION_VERSION=$(VERSION)'" ./cmd/protocol/.
+	GOOS=linux $(GO) build -o protocol -ldflags "-s -w -X 'main.APPLICATION_VERSION=$(VERSION)'" ./cmd/protocol/.
 
 clean:
 ifneq (,$(wildcard $(OUT)))
