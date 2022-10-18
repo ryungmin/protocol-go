@@ -1,11 +1,11 @@
 include ENVIRONMENTS
 GO=/usr/local/go/bin/go
 
-.PHONY: build_macos
+.PHONY: build dist
 
-all: build_macos
+all: build
 
-build_macos:
+build:
 	@$(GO) mod tidy
 	GOOS=darwin GOARCH=amd64 $(GO) build -o $(OUT)_amd64 -ldflags "-s -w -X 'main.APPLICATION_VERSION=$(VERSION)'" ./cmd/protocol/.
 
@@ -13,6 +13,9 @@ build_macos:
 
 	@lipo -create -output $(OUT) $(OUT)_amd64 $(OUT)_arm64
 	@rm $(OUT)_amd64 $(OUT)_arm64
+
+dist: build
+	tar czvf $(OUT)-$(VERSION)-macos-universal.tar.gz $(OUT)
 
 clean:	
 ifneq (,$(wildcard $(OUT)))

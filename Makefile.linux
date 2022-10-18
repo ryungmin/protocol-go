@@ -1,12 +1,15 @@
 include ENVIRONMENTS
 GO=/usr/local/go/bin/go
 
-.PHONY: build_linux 
+.PHONY: build dist
 
-all: build_linux
+all: build
 
-build_linux:
-	GOOS=linux $(GO) build -o protocol -ldflags "-s -w -X 'main.APPLICATION_VERSION=$(VERSION)'" ./cmd/protocol/.
+build:
+	GOOS=linux $(GO) build -o $(OUT) -ldflags "-s -w -X 'main.APPLICATION_VERSION=$(VERSION)'" ./cmd/protocol/.
+
+dist: build
+	tar czvf $(OUT)-$(VERSION)-linux-amd64.tar.gz $(OUT)
 
 clean:
 ifneq (,$(wildcard $(OUT)))
@@ -14,3 +17,4 @@ ifneq (,$(wildcard $(OUT)))
 endif
 
 	@$(GO) clean
+
