@@ -34,7 +34,7 @@ func main() {
 
 		if !ok {
 			// specs
-			specs = lowerArg1
+			specs = os.Args[1]
 		}
 
 		proto, err := protocol.NewProtocol(specs)
