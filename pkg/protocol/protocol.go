@@ -301,15 +301,15 @@ func (h *configEntity) parseOptionList(options []string) error {
 				return fmt.Errorf("FATAL: Invalid value for '%s' option (%s)", t, v)
 			}
 
-			if strings.ToLower(v) == "oddchar" {
+			if strings.ToLower(t) == "oddchar" {
 				h.hdr_char_fill_odd = rune(v[0])
-			} else if strings.ToLower(v) == "evenchar" {
+			} else if strings.ToLower(t) == "evenchar" {
 				h.hdr_char_fill_even = rune(v[0])
-			} else if strings.ToLower(v) == "startchar" {
+			} else if strings.ToLower(t) == "startchar" {
 				h.hdr_char_start = rune(v[0])
-			} else if strings.ToLower(v) == "endchar" {
+			} else if strings.ToLower(t) == "endchar" {
 				h.hdr_char_end = rune(v[0])
-			} else if strings.ToLower(v) == "sepchar" {
+			} else if strings.ToLower(t) == "sepchar" {
 				h.hdr_char_sep = rune(v[0])
 			}
 		}
