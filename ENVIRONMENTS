@@ -1,2 +1,2 @@
-VERSION="0.1.2a"
+VERSION="$(shell head -n 1 version)"
 OUT=protocol
