@@ -1,4 +1,8 @@
 # Why this project? 
+[![Licence](https://img.shields.io/github/license/ryungmin/protocol-go)](LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/ryungmin/protocol-go)](https://github.com/perimeterx/go-project-structure/releases)
+[![Issues](https://img.shields.io/github/issues/ryungmin/protocol-go?logo=github)](https://github.com/perimeterx/go-project-structure/issues)
+
 Protocol is a command-line tool to display ASCII RFC-like protocol header diagrams for both existing network protocols or user-defined ones (using a very simple syntax). Protocol is written in Python and it's open-source software, licensed under the GPLv3 license. 
  
 This project re-implements protocol in go-lang. Compiled protocol is very suitable for environments where python is not installed. 
