@@ -1,0 +1,39 @@
+# https://taskfile.dev
+# go install github.com/go-task/task/v3/cmd/task@latest
+version: '3'
+
+vars:
+  GO: go.exe
+  OUT: protocol.exe
+envs:
+  GOOS: windows
+
+tasks:
+  default:
+    deps:
+      - mod-tidy
+    cmds:
+      - task: build-amd64
+      - task: build-386
+
+  build-386:
+    desc: protocol build for windows/386
+    cmds:
+      - "{{.GO}} build -o {{.OUT}} {{.GLOBAL_OPTIONS}}"
+    env:
+      GOARCH: 386
+    vars:
+      OUT: protocol-386.exe
+
+  build-amd64:
+    desc: protocol build for windows/amd64
+    cmds:
+      - "{{.GO}} build -o {{.OUT}} {{.GLOBAL_OPTIONS}}"
+    env:
+      GOARCH: amd64
+
+  mod-tidy:
+    cmds:
+      - "{{.GO}} mod tidy"
+      - "{{.GO}} get -u ./..."
+    

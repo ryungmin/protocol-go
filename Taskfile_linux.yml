@@ -1,0 +1,28 @@
+# https://taskfile.dev
+# go install github.com/go-task/task/v3/cmd/task@latest
+version: '3'
+
+vars:
+  GO: go
+  OUT: protocol
+
+tasks:
+  default:
+    deps:
+      - mod-tidy
+    cmds:
+      - task: build-linux
+
+  build-linux:
+    desc: protocol build for linux/amd64
+    cmds:
+      - "{{.GO}} build -o {{.OUT}} {{.GLOBAL_OPTIONS}}"
+    env:
+      GOOS: linux     
+      GOARCH: amd64
+
+  mod-tidy:
+    cmds:
+      - "{{.GO}} mod tidy"
+      - "{{.GO}} get -u ./..."
+    
