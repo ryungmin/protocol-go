@@ -19,7 +19,7 @@ tasks:
   build-386:
     desc: protocol build for windows/386
     cmds:
-      - "{{.GO}} build -o {{.OUT}} {{.BUILD}}"
+      - "{{.GO}} build -o {{.OUT}} {{.GLOBAL_OPTIONS}}"
     env:
       GOARCH: 386
     vars:
@@ -28,7 +28,7 @@ tasks:
   build-amd64:
     desc: protocol build for windows/amd64
     cmds:
-      - "{{.GO}} build -o {{.OUT}} {{.BUILD}}"
+      - "{{.GO}} build -o {{.OUT}} {{.GLOBAL_OPTIONS}}"
     env:
       GOARCH: amd64
 

@@ -2,12 +2,17 @@
 # go install github.com/go-task/task/v3/cmd/task@latest
 version: '3'
 
+vars:
+  VERSION: 0.1.2a
+  APPLICATION_VERSION: -X 'main.APPLICATION_VERSION={{.VERSION}}'
+  BUILD_FLAGS: -ldflags "-s -w {{.APPLICATION_VERSION}}"
+  PACKAGES: ./cmd/protocol/.
+
 includes:
   build: 
     taskfile: Taskfile_{{OS}}.yml
     vars:
-      VERSION: 0.1.2a
-      BUILD: "-ldflags \"-s -w -X 'main.APPLICATION_VERSION={{.VERSION}}'\" ./cmd/protocol/."
+      GLOBAL_OPTIONS: "{{.BUILD_FLAGS}} {{.PACKAGES}}"      
 
 tasks:
   default:

@@ -16,7 +16,7 @@ tasks:
   build-linux:
     desc: protocol build for linux/amd64
     cmds:
-      - "{{.GO}} build -o {{.OUT}} {{.BUILD}}"
+      - "{{.GO}} build -o {{.OUT}} {{.GLOBAL_OPTIONS}}"
     env:
       GOOS: linux     
       GOARCH: amd64
