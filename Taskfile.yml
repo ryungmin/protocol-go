@@ -1,0 +1,15 @@
+# https://taskfile.dev
+# go install github.com/go-task/task/v3/cmd/task@latest
+version: '3'
+
+includes:
+  build: 
+    taskfile: Taskfile_{{OS}}.yml
+    vars:
+      VERSION: 0.1.2a
+      BUILD: "-ldflags \"-s -w -X 'main.APPLICATION_VERSION={{.VERSION}}'\" ./cmd/protocol/."
+
+tasks:
+  default:
+    deps: 
+      - build:default

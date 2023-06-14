@@ -1,0 +1,48 @@
+# https://taskfile.dev
+# go install github.com/go-task/task/v3/cmd/task@latest
+version: '3'
+
+vars:
+  GO: go
+  OUT: protocol
+
+tasks:
+  default:
+    deps:
+      - mod-tidy
+    cmds:
+      - task: build-amd64
+      - task: build-arm64
+      - task: merge
+
+  build-amd64:
+    desc: protocol build for darwin/amd64
+    cmds:
+      - "{{.GO}} build -o {{.OUT}}_{{.GOARCH}} {{.BUILD}}"
+    env:
+      GOOS: darwin     
+      GOARCH: amd64
+    vars:
+      OUT:
+  build-arm64:
+    desc: protocol build for darwin/arm64
+    cmds:
+      - "{{.GO}} build -o {{.OUT}}_{{.GOARCH}} {{.BUILD}}"
+    env:
+      GOOS: darwin     
+      GOARCH: arm64
+    vars:
+      OUT: protocol
+  lipo:
+    desc:
+    cmds: 
+      - lipo -create -output $(OUT) $(OUT)_amd64 $(OUT)_arm64
+  remove:
+    desc:
+    cmds: 
+      - rm $(OUT)_amd64 $(OUT)_arm64
+
+  mod-tidy:
+    cmds:
+      - "{{.GO}} mod tidy"
+      - "{{.GO}} get -u ./..."
