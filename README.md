@@ -12,7 +12,13 @@ This project re-implements protocol in go-lang. Compiled protocol is very suitab
 [Luis MartinGarcia's Protocol](https://www.luismg.com/protocol/) 
  
 github: [A Simple ASCII Header Generator for Network Protocols](https://github.com/luismartingarcia/protocol) 
- 
+
+# Install the protocol-go
+
+```
+$ go install github.com/ryungmin/protocol-go/cmd/protocol@latest
+```
+
 # Building the protocol-go 
 ``` 
 $ make  
