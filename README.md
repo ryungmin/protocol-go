@@ -20,10 +20,19 @@ $ go install github.com/ryungmin/protocol-go/cmd/protocol@latest
 ```
 
 # Building the protocol-go 
+
+## Building with Makefile
+
 ``` 
 $ make  
-``` 
- 
+```
+
+## Building with Taskfile
+
+```
+$ task
+```
+
 ## linux 
 ``` 
 $ GOOS=linux go build -o protocol ./cmd/protocol/. 
