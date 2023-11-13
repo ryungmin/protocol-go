@@ -281,21 +281,7 @@ func (p *protocolImpl) setOptions(options []string) error {
 	return p.config.parseOptionList(options)
 }
 
-func (h *configEntity) parseOptionList(options []string) error {
-	if len(options) == 0 {
-		return nil
-	}
-
-	for _, option := range options {
-		columns := strings.Split(option, "=")
-
-		if len(columns) < 2 {
-			continue
-		}
-
-		key := strings.ToLower(strings.TrimSpace(columns[0]))
-		value := strings.ToLower(strings.TrimSpace(columns[1]))
-
+func (h *configEntity) fromKeyAndValue(key, value string) error {
 		switch key {
 		case "bits":
 			n, err := strconv.Atoi(value)
@@ -335,6 +321,29 @@ func (h *configEntity) parseOptionList(options []string) error {
 			case "sepchar":
 				h.hdr_char_sep = rune(value[0])
 			}
+	}
+	return nil
+}
+
+func (h *configEntity) parseOptionList(options []string) error {
+	if len(options) == 0 {
+		return nil
+	}
+
+	for _, option := range options {
+		columns := strings.Split(option, "=")
+
+		if len(columns) < 2 {
+			continue
+		}
+
+		key := strings.ToLower(strings.TrimSpace(columns[0]))
+		value := strings.ToLower(strings.TrimSpace(columns[1]))
+
+		err := h.fromKeyAndValue(key, value)
+
+		if err != nil {
+			return err
 		}
 	}
 	return nil
