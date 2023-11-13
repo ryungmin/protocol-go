@@ -23,6 +23,22 @@ func center(s string, n int, character rune) string {
 	return strings.Repeat(fill, left) + s + strings.Repeat(fill, right)
 }
 
+func _print_top(bits_per_line, ticks int) string {
+	line := ""
+	for i := 0; i < bits_per_line; i++ {
+		unit := i % ticks
+		n := i / 10
+
+		if unit == 0 {
+			line += fmt.Sprintf(" %d", n)
+		} else {
+			line += "  "
+		}
+	}
+	line += "\n"
+	return line
+}
+
 // @return a string representing the bit units and bit tens on top of the
 // protocol header. Note that a proper string is only returned if one or
 // both self.do_print_top_tens and self.do_print_top_units is True.
@@ -42,19 +58,10 @@ func _get_top_numbers(opts ...option) string {
 	lines := []string{"", ""}
 
 	if cfgs.do_print_top_tens {
-		for i := 0; i < cfgs.bits_per_line; i++ {
-			unit := i % 10
-			n := i / 10
-
-			if unit == 0 {
-				lines[0] += fmt.Sprintf(" %d", n)
-			} else {
-				lines[0] += "  "
-			}
-		}
-		lines[0] += "\n"
+		lines[0] = _print_top(cfgs.bits_per_line, 10)
 	}
 
+	fmt.Printf("%+v\n", *cfgs)
 	if cfgs.do_print_top_units {
 		for i := 0; i < cfgs.bits_per_line; i++ {
 			unit := i % 10
