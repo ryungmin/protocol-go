@@ -40,6 +40,8 @@ func main() {
 		proto, err := protocol.NewProtocol(specs)
 
 		if err != nil {
+			display_help()
+
 			os.Exit(1)
 		}
 
