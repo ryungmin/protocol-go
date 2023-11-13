@@ -17,6 +17,26 @@ type configEntity struct {
 	do_print_top_units bool
 }
 
+type option func(c *configEntity)
+
+func with_bits_per_line(bits_per_line int) option {
+	return func(c *configEntity) {
+		c.bits_per_line = bits_per_line
+	}
+}
+
+func with_do_print_top_tens(do_print_top_tens bool) option {
+	return func(c *configEntity) {
+		c.do_print_top_tens = do_print_top_tens
+	}
+}
+
+func with_do_print_top_units(do_print_top_units bool) option {
+	return func(c *configEntity) {
+		c.do_print_top_units = do_print_top_units
+	}
+}
+
 type Protocol interface {
 	String() string
 }
@@ -47,9 +67,10 @@ func (pt protocolImpl) String() string {
 	proto_fields := pt._process_field_list()
 	lines := []string{}
 	numbers := _get_top_numbers(
-		pt.config.bits_per_line,
-		pt.config.do_print_top_tens,
-		pt.config.do_print_top_units)
+		with_bits_per_line(pt.config.bits_per_line),
+		with_do_print_top_tens(pt.config.do_print_top_tens),
+		with_do_print_top_units(pt.config.do_print_top_units),
+	)
 
 	if len(numbers) > 0 {
 		lines = append(lines, numbers)

@@ -28,11 +28,21 @@ func center(s string, n int, character rune) string {
 // both self.do_print_top_tens and self.do_print_top_units is True.
 // The returned string is not \n terminated, but it may contain a newline
 // character in the middle.
-func _get_top_numbers(bits_per_line int, do_print_top_tens, do_print_top_units bool) string {
+func _get_top_numbers(opts ...option) string {
+	cfgs := &configEntity{
+		bits_per_line:      32,
+		do_print_top_tens:  false,
+		do_print_top_units: false,
+	}
+
+	for _, opt := range opts {
+		opt(cfgs)
+	}
+
 	lines := []string{"", ""}
 
-	if do_print_top_tens {
-		for i := 0; i < bits_per_line; i++ {
+	if cfgs.do_print_top_tens {
+		for i := 0; i < cfgs.bits_per_line; i++ {
 			unit := i % 10
 			n := i / 10
 
@@ -45,8 +55,8 @@ func _get_top_numbers(bits_per_line int, do_print_top_tens, do_print_top_units b
 		lines[0] += "\n"
 	}
 
-	if do_print_top_units {
-		for i := 0; i < bits_per_line; i++ {
+	if cfgs.do_print_top_units {
+		for i := 0; i < cfgs.bits_per_line; i++ {
 			unit := i % 10
 			lines[1] += fmt.Sprintf(" %d", unit)
 		}
@@ -63,7 +73,7 @@ func _get_top_numbers(bits_per_line int, do_print_top_tens, do_print_top_units b
 // caller is expected to store or use such list.
 // @raise ProtocolException in case the supplied spec is not valid
 func parseSpec(spec string) ([]string, []string) {
-	items := []string{}
+	var items []string
 	options := []string{}
 
 	if strings.Contains(spec, "?") {
