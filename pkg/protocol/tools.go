@@ -61,7 +61,6 @@ func _get_top_numbers(opts ...option) string {
 		lines[0] = _print_top(cfgs.bits_per_line, 10)
 	}
 
-	fmt.Printf("%+v\n", *cfgs)
 	if cfgs.do_print_top_units {
 		for i := 0; i < cfgs.bits_per_line; i++ {
 			unit := i % 10
