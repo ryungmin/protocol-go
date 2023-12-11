@@ -211,9 +211,9 @@ func (pt protocolImpl) String() string {
 			var line string
 			total += field.len
 			if field.len < 2 {
-				line = fmt.Sprintf("* %s (%d byte)", field.text, field.len)
+				line = fmt.Sprintf("* %s (%d bit)", field.text, field.len)
 			} else {
-				line = fmt.Sprintf("* %s (%d bytes)", field.text, field.len)
+				line = fmt.Sprintf("* %s (%d bits)", field.text, field.len)
 			}
 
 			lines = append(lines, line)
@@ -221,9 +221,9 @@ func (pt protocolImpl) String() string {
 
 		var line string
 		if total < 2 {
-			line = fmt.Sprintf("total %d byte", total)
+			line = fmt.Sprintf("total %d bit", total)
 		} else {
-			line = fmt.Sprintf("total %d bytes", total)
+			line = fmt.Sprintf("total %d bits", total)
 		}
 		lines = append(lines, line)
 	}
